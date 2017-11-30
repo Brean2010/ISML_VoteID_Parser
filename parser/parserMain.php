@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+
 include 'parserFunctions.php';
 
 if (!isset($_POST["URL"]) || $_POST["URL"] == null) {
