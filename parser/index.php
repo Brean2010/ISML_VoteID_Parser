@@ -9,12 +9,12 @@
 	<script type="text/javascript">
 		"use strict";
 
-		Element.prototype.remove = function() {
+		Element.prototype.remove = function () {
 			this.parentElement.removeChild(this);
 		}
-		NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-			for(var i = this.length - 1; i >= 0; i--) {
-				if(this[i] && this[i].parentElement) {
+		NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+			for (var i = this.length - 1; i >= 0; i--) {
+				if (this[i] && this[i].parentElement) {
 					this[i].parentElement.removeChild(this[i]);
 				}
 			}
@@ -24,16 +24,16 @@
 			var handleResponse = function (status, response) {
 				document.getElementById("loading_image").remove();
 				document.getElementById("submit_URL").removeAttribute("disabled");
-				if(response == "REQUEST ERROR"){
+				if (response == "REQUEST ERROR") {
 					alert("REQUEST ERROR: check your URL");
 					return false;
 				}
-				if(response == "PARSING ERROR"){
+				if (response == "PARSING ERROR") {
 					alert("PARSING ERROR: check your URL");
 					return false;
 				}
 				var id;
-				if((id = document.getElementById("result_download")) != null){
+				if ((id = document.getElementById("result_download")) != null) {
 					id.remove();
 				}
 
@@ -80,14 +80,20 @@
 </head>
 
 <body>
-<h1>ISML Vote-IDs Parser</h1>
-<h2>Parser:</h2>
-<form id ="parser" method="POST" onsubmit="sendUrlToParser(); return false;">
-	<label for="URL">URL from ISML forum</label>
-	<input type="text" id="URL" name="URL" title="URL from ISML forum:"/>
-	<input type="submit" id="submit_URL" value="Parse"/>
-</form>
-<h2>Result:</h2>
-<div id="result"></div>
+<article>
+	<h1>ISML Vote-IDs Parser</h1>
+	<h2>Parser:</h2>
+	<form id="parser" method="POST" onsubmit="sendUrlToParser(); return false;">
+		<label for="URL">URL from ISML forum: </label>
+		<input type="text" id="URL" name="URL" title="URL from ISML forum:"/>
+		<input type="submit" id="submit_URL" value="Parse"/>
+	</form>
+	<h2>Result:</h2>
+	<div id="result"></div>
+</article>
+<footer>
+	<h2>Source code:</h2>
+	<a href="https://github.com/Brean2010/ISML_VoteID_Parser">https://github.com/Brean2010/ISML_VoteID_Parser</a>
+</footer>
 </body>
 </html>
