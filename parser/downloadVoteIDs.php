@@ -5,7 +5,7 @@ if (!isset($_GET["FileID"])) {
 }
 
 $FileID = $_GET["FileID"];
-$FilePath = 'VoteIDs_files/' . $FileID . '.txt';
+$FilePath = 'VoteIDs_files/' . $FileID . '.csv';
 
 if (!file_exists($FilePath)) {
 	echo 'ERROR';
@@ -15,8 +15,8 @@ if (!file_exists($FilePath)) {
 date_default_timezone_set('UTC');
 header('Cache-Control: public');
 header('Content-Description: File Transfer');
-header('Content-Disposition: attachment; filename=Vote_ID-'.date("Y-m-d_H-i-s"));
-header('Content-Type: text/plain');
+header('Content-Disposition: attachment; filename=Vote_ID-'.date("Y-m-d_H-i-s").'.csv');
+header('Content-Type: text/csv');
 header('Content-Transfer-Encoding: binary');
 /*actually download*/
 readfile($FilePath);
